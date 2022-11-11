@@ -1,6 +1,6 @@
 # Implementation of variants of attention
 
-## self attention https://arxiv.org/abs/1706.03762
+## self attention[https://arxiv.org/abs/1706.03762] 
 
 
 
@@ -13,10 +13,8 @@ $$
 ### usage
 
 ```python
-import torch.nn as nn
-import math
+import torch
 import matplotlib.pyplot as plt
-import torch.nn.functional
 
 
 import Attention.Self_Attention as Self_Attention
