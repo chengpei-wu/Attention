@@ -1,8 +1,6 @@
 # Implementation of variants of attention
 
-## self attention
-
-[paper]: https://arxiv.org/abs/1706.03762	"Transformer"
+## self attention https://arxiv.org/abs/1706.03762
 
 
 
