@@ -32,14 +32,3 @@ class SimpleSelfAttention(nn.Module):
         atten = torch.nn.functional.softmax(torch.bmm(x, x.permute(0, 2, 1)), dim=-1)
         output = torch.bmm(atten, x)
         return (output, atten) if self.show_att else output
-
-
-x = torch.rand(1, 5, 16)
-att = SimpleSelfAttention(show_att=True)
-b, atten = att(x)
-print(b.size())
-
-# show the attention of input
-plt.imshow(atten.detach().numpy().squeeze(), cmap='gray')
-plt.colorbar()
-plt.show()
