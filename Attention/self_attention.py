@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 import torch.nn.functional
 
 
-class Self_Attention(nn.Module):
+class SelfAttention(nn.Module):
     def __init__(self, input_dim, k_dim, v_dim, show_att=False):
-        super(Self_Attention, self).__init__()
+        super(SelfAttention, self).__init__()
         self.Q = nn.Linear(input_dim, k_dim)
         self.K = nn.Linear(input_dim, k_dim)
         self.V = nn.Linear(input_dim, v_dim)
@@ -23,12 +23,23 @@ class Self_Attention(nn.Module):
         return (output, atten) if self.show_att else output
 
 
-a = torch.rand(1, 5, 16)
-print(a)
-att = Self_Attention(16, 32, 32, show_att=True)
-b, atten = att(a)
-print(b.size())
-print(atten)
+class SimpleSelfAttention(nn.Module):
+    def __init__(self, show_att=False):
+        super(SimpleSelfAttention, self).__init__()
+        self.show_att = show_att
 
-plt.imshow(atten.detach().numpy().squeeze())
+    def forward(self, x):
+        atten = torch.nn.functional.softmax(torch.bmm(x, x.permute(0, 2, 1)), dim=-1)
+        output = torch.bmm(atten, x)
+        return (output, atten) if self.show_att else output
+
+
+x = torch.rand(1, 5, 16)
+att = SimpleSelfAttention(show_att=True)
+b, atten = att(x)
+print(b.size())
+
+# show the attention of input
+plt.imshow(atten.detach().numpy().squeeze(), cmap='gray')
+plt.colorbar()
 plt.show()

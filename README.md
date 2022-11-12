@@ -2,8 +2,6 @@
 
 ## self attention
 
-[paper]: https://arxiv.org/abs/1706.03762	"Transformer"
-
 
 
 ### math
@@ -21,11 +19,11 @@ import matplotlib.pyplot as plt
 import torch.nn.functional
 
 
-import Attention.Self_Attention as Self_Attention
+import Attention.SelfAttention as SelfAttention
 
 x = torch.rand(1, 5, 16)
-att = Self_Attention(16, 32, 32, show_att=True)
-b, atten = att(a)
+att = SelfAttention(16, 32, 32, show_att=True)
+b, atten = att(x)
 print(b.size())
 
 # show the attention of input
