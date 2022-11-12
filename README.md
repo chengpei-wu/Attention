@@ -35,13 +35,10 @@ plt.show()
 ### math
 
 $$
-MultiHead(Q,K,V)=Concate(head_1,\dots,head_n)W^O
-$$
-
-$$
-
-
+\begin{align}
+MultiHead(Q,K,V)=Concate(head_1,\dots,head_n)W^O \\
 where\ head_i=Attention(QW^Q_i,KW^K_i,VW^V_i)
+\end{align}
 $$
 
 ### usage
